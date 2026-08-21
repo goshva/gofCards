@@ -30,8 +30,9 @@ backend/media/
 *.key
 
 # --- Node / frontend ---
+# frontend/dist IS committed: the Amvera python environment installs pip
+# dependencies only and cannot run npm, so the built SPA has to arrive ready
 node_modules/
-dist/
 .vite/
 *.tsbuildinfo
 

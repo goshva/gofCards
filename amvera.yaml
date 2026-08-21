@@ -1,0 +1,24 @@
+# Amvera deployment configuration.
+#
+# One container serves everything: FastAPI answers /api, /docs and /media, and
+# hands the built SPA (frontend/dist) to every other path. The frontend build is
+# committed because the python environment installs pip packages only and cannot
+# run npm.
+meta:
+  environment: python
+  toolchain:
+    name: pip
+    version: 3.11
+
+build:
+  requirementsPath: backend/requirements.txt
+  useCache: true
+
+run:
+  # --app-dir lets uvicorn find the package without changing the working
+  # directory; the repository root stays the working directory
+  command: uvicorn app.main:app --host 0.0.0.0 --port 80 --app-dir backend
+  containerPort: 80
+  # the SQLite database and downloaded media are written here and survive
+  # a redeploy; the code defaults to exactly this path
+  persistenceMount: /data

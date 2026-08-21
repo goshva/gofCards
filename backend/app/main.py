@@ -5,8 +5,11 @@ import logging
 import mimetypes
 from contextlib import asynccontextmanager
 
-from fastapi import FastAPI
+from pathlib import Path
+
+from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 
 from app.api.v1 import api_router
@@ -33,9 +36,9 @@ async def lifespan(app: FastAPI):
     task: asyncio.Task | None = None
     if settings.sync_on_startup:
         if empty:
-            # nothing to hand out until the catalogue exists, so seed it inline
-            logger.info("catalogue empty, running first GoFuture sync")
-            await run_sync_once()
+            logger.info("catalogue empty, first GoFuture sync will run in the background")
+        # never block startup: the first sync takes a couple of minutes and a
+        # platform health check would time out long before it finishes
         task = asyncio.create_task(sync_loop(settings.sync_interval_seconds))
 
     yield
@@ -80,3 +83,28 @@ app.mount("/media", StaticFiles(directory=MEDIA_ROOT), name="media")
 @app.get("/health", tags=["service"])
 async def health() -> dict:
     return {"status": "ok", "project": settings.project_name}
+
+
+# The built SPA is served by the API when it is present, so a single container
+# covers the whole app. Without a build the backend still serves the API alone.
+SPA_DIR = Path(__file__).resolve().parents[2] / "frontend" / "dist"
+
+if SPA_DIR.is_dir():
+    app.mount("/assets", StaticFiles(directory=SPA_DIR / "assets"), name="spa-assets")
+
+    # a mistyped API path must still answer 404 JSON rather than the SPA shell
+    API_PREFIXES = (settings.api_v1_prefix.strip("/"), "media", "docs", "redoc", "openapi.json")
+
+    @app.get("/{full_path:path}", include_in_schema=False)
+    async def spa(full_path: str) -> FileResponse:
+        """History-mode routing: a real file wins, anything else gets index.html."""
+        if full_path.split("/")[0] in API_PREFIXES or full_path.startswith("api/"):
+            raise HTTPException(status_code=404, detail="Not Found")
+
+        candidate = (SPA_DIR / full_path).resolve()
+        if full_path and candidate.is_file() and candidate.is_relative_to(SPA_DIR):
+            return FileResponse(candidate)
+        return FileResponse(SPA_DIR / "index.html")
+
+else:
+    logger.warning("SPA build not found at %s, serving the API only", SPA_DIR)
