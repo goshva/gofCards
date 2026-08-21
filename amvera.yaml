@@ -15,9 +15,9 @@ build:
   useCache: true
 
 run:
-  # --app-dir lets uvicorn find the package without changing the working
-  # directory; the repository root stays the working directory
-  command: uvicorn app.main:app --host 0.0.0.0 --port 80 --app-dir backend
+  # a real file in the repository root; it puts backend/ on the import path and
+  # starts uvicorn on $PORT (80 by default, matching containerPort)
+  scriptName: main.py
   containerPort: 80
   # the SQLite database and downloaded media are written here and survive
   # a redeploy; the code defaults to exactly this path
