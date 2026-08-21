@@ -1,0 +1,286 @@
+{
+  "rarities": [
+    "COMMON",
+    "RARE",
+    "EPIC",
+    "LEGENDARY"
+  ],
+  "rarityWeights": {
+    "COMMON": 100,
+    "RARE": 30,
+    "EPIC": 8,
+    "LEGENDARY": 2
+  },
+  "rarityMultipliers": {
+    "COMMON": 1.0,
+    "RARE": 1.15,
+    "EPIC": 1.35,
+    "LEGENDARY": 1.6
+  },
+  "rarityBasePrice": {
+    "COMMON": 50,
+    "RARE": 150,
+    "EPIC": 400,
+    "LEGENDARY": 1200
+  },
+  "cardTypes": [
+    "PLAYER",
+    "TEAM"
+  ],
+  "positions": [
+    "GOALKEEPER",
+    "FIELD"
+  ],
+  "positionSlots": [
+    "GK",
+    "F1",
+    "F2",
+    "F3",
+    "F4",
+    "SUB1",
+    "SUB2"
+  ],
+  "squadRules": {
+    "starters": 5,
+    "startingSlots": [
+      "GK",
+      "F1",
+      "F2",
+      "F3",
+      "F4"
+    ],
+    "benchSlots": [
+      "SUB1",
+      "SUB2"
+    ],
+    "maxBench": 2,
+    "requiredGoalkeepers": 1,
+    "requiredFieldPlayers": 4,
+    "captainRequired": true,
+    "captainMultiplier": 2.0,
+    "viceCaptainMultiplier": 1.5
+  },
+  "scoring": {
+    "appearance": 2,
+    "win": 4,
+    "draw": 2,
+    "loss": 0,
+    "goalScoredFieldPlayer": 5,
+    "goalScoredGoalkeeper": 8,
+    "assist": 3,
+    "teamGoalDigital": 1,
+    "teamGoalPhysical": 1,
+    "cleanSheetGoalkeeper": 5,
+    "cleanSheetFieldPlayer": 1,
+    "goalConcededGoalkeeperPer": -1,
+    "shootoutWin": 2,
+    "shootoutLoss": -1,
+    "save": 1,
+    "yellowCard": -1,
+    "redCard": -3,
+    "ownGoal": -2,
+    "perfectFiveBonus": 20
+  },
+  "startingCoins": 1000,
+  "startingPackId": 1,
+  "gofuture": {
+    "baseUrl": "https://results.gofuture.games/api/v1.0",
+    "eventSlug": "games-of-the-future-2026",
+    "tournamentSlug": "phygital-football-2026"
+  },
+  "ratings": {
+    "scaleMin": 42,
+    "scaleMax": 97,
+    "attributes": [
+      "atk",
+      "def",
+      "dig",
+      "phy",
+      "clt",
+      "exp"
+    ],
+    "attributeLabels": {
+      "atk": "АТК",
+      "def": "ЗАЩ",
+      "dig": "ЦИФ",
+      "phy": "ФИЗ",
+      "clt": "ХЛД",
+      "exp": "ОПЫ"
+    },
+    "attributeTitles": {
+      "atk": "Атака — голы команды за матч",
+      "def": "Защита — пропущенные за матч",
+      "dig": "Цифровая часть — разница мячей",
+      "phy": "Физическая часть — разница мячей",
+      "clt": "Хладнокровие — пенальти и глубина плей-офф",
+      "exp": "Опыт — возраст и матчи команды"
+    },
+    "weightsField": {
+      "atk": 0.3,
+      "def": 0.15,
+      "dig": 0.2,
+      "phy": 0.2,
+      "clt": 0.1,
+      "exp": 0.05
+    },
+    "weightsGoalkeeper": {
+      "atk": 0.08,
+      "def": 0.42,
+      "dig": 0.15,
+      "phy": 0.1,
+      "clt": 0.15,
+      "exp": 0.1
+    },
+    "attackShirts": [
+      7,
+      9,
+      10,
+      11,
+      17,
+      19,
+      20
+    ],
+    "defenceShirts": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "shirtBonus": 4,
+    "roundDepth": {
+      "final": 6,
+      "3rd place": 5,
+      "sf": 4,
+      "qf": 3,
+      "last 16": 2,
+      "decider": 2
+    },
+    "rarityRankCutoffs": {
+      "LEGENDARY": 10,
+      "EPIC": 32,
+      "RARE": 72
+    }
+  },
+  "tournament": {
+    "entryFee": 250,
+    "eloDivisor": 14.0,
+    "drawBase": 0.24,
+    "drawFalloff": 30.0,
+    "captainWeight": 2.0,
+    "baseGoals": 2.4,
+    "maxGoals": 8,
+    "stageOrder": [
+      "NONE",
+      "GROUP",
+      "DECIDER",
+      "QUARTER",
+      "SEMI",
+      "MEDAL",
+      "CHAMPION"
+    ],
+    "stageLabels": {
+      "NONE": "не стартовал",
+      "GROUP": "групповой этап",
+      "DECIDER": "стыковой матч",
+      "QUARTER": "четвертьфинал",
+      "SEMI": "полуфинал",
+      "MEDAL": "матч за медали",
+      "CHAMPION": "чемпион"
+    },
+    "coinsPerStage": 260,
+    "pointsPerStage": 12,
+    "winBonusCoins": 60,
+    "winBonusPoints": 3,
+    "cooldownMinutes": 60
+  },
+  "cards": {
+    "tournamentLifespan": 6,
+    "permanentPackId": 4
+  },
+  "payments": {
+    "provider": "sandbox",
+    "currency": "KZT",
+    "testCard": {
+      "number": "4242 4242 4242 4242",
+      "expiry": "12/30",
+      "cvc": "123"
+    },
+    "products": [
+      {
+        "sku": "PACK_COLLECTOR",
+        "title": "Коллекционный бустер",
+        "subtitle": "3 вечные карточки",
+        "price": 1990,
+        "packId": 4
+      },
+      {
+        "sku": "PACK_COLLECTOR_X3",
+        "title": "Три коллекционных бустера",
+        "subtitle": "9 вечных карточек",
+        "price": 4990,
+        "packId": 4,
+        "quantity": 3
+      },
+      {
+        "sku": "COINS_10000",
+        "title": "10 000 монет",
+        "subtitle": "внутриигровая валюта",
+        "price": 990,
+        "coins": 10000
+      }
+    ]
+  },
+  "quests": {
+    "referralReward": 500,
+    "referralFriendBonus": 250,
+    "items": [
+      {
+        "key": "WATCH_MATCH",
+        "title": "Посмотреть матч",
+        "description": "Открой трансляцию любого матча турнира и досмотри отрывок",
+        "reward": 120,
+        "cooldownHours": 6,
+        "repeatable": true,
+        "icon": "▶"
+      },
+      {
+        "key": "SUBSCRIBE_TELEGRAM",
+        "title": "Подписаться на Telegram",
+        "description": "Подпишись на канал Games of the Future",
+        "reward": 300,
+        "repeatable": false,
+        "icon": "◈",
+        "url": "https://t.me/gofuturegames"
+      },
+      {
+        "key": "SUBSCRIBE_YOUTUBE",
+        "title": "Подписаться на YouTube",
+        "description": "Трансляции и обзоры фиджитал-матчей",
+        "reward": 300,
+        "repeatable": false,
+        "icon": "▷",
+        "url": "https://youtu.be/OzxJ0NiX5Wk"
+      },
+      {
+        "key": "DAILY_CHECKIN",
+        "title": "Ежедневный вход",
+        "description": "Заходи каждый день и забирай монеты",
+        "reward": 150,
+        "cooldownHours": 20,
+        "repeatable": true,
+        "icon": "✦"
+      },
+      {
+        "key": "INVITE_FRIEND",
+        "title": "Привести друга",
+        "description": "Друг регистрируется по твоему коду — монеты получают оба",
+        "reward": 500,
+        "repeatable": true,
+        "icon": "✚",
+        "referral": true
+      }
+    ]
+  }
+}

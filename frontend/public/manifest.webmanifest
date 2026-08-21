@@ -1,0 +1,23 @@
+{
+  "name": "GoF Cards — карточки Phygital Football",
+  "short_name": "GoF Cards",
+  "description": "Коллекционные карточки Phygital Football на Играх Будущего 2026: бустеры, обмены, составы и турнир.",
+  "lang": "ru",
+  "start_url": "/collection",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#070618",
+  "theme_color": "#070618",
+  "categories": ["games", "sports", "entertainment"],
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Коллекция", "url": "/collection" },
+    { "name": "Квесты", "url": "/quests" },
+    { "name": "Турнир", "url": "/tournament" }
+  ]
+}
